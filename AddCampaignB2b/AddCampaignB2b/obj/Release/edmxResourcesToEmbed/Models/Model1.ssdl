@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pd_cmcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AGENT_CAMP">
+    <Key>
+      <PropertyRef Name="AGENT_CAMP_ID" />
+    </Key>
+    <Property Name="AGENT_CAMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="COMMUNICATOR" Type="varchar" MaxLength="25" />
+    <Property Name="CAMP_ABBR" Type="varchar" MaxLength="8" />
+    <Property Name="ACTIVE_SW" Type="bit" />
+    <Property Name="START_DATE" Type="datetime" />
+    <Property Name="END_DATE" Type="datetime" />
+    <Property Name="LAST_UPDATED_BY" Type="int" />
+    <Property Name="LAST_UPDATED_DATE" Type="datetime" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="MAX_RECORDS" Type="int" />
+    <Property Name="AGENT_PRIORITY" Type="int" />
+    <Property Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" Type="bit" />
+    <Property Name="EMPLOYEE_ID" Type="int" />
+    <Property Name="CALLER_ID" Type="varchar" MaxLength="11" />
+    <Property Name="REGION" Type="varchar" MaxLength="20" />
+    <Property Name="REGION_ID" Type="int" />
+    <Property Name="PROGRAM_START_DATE" Type="datetime" />
+    <Property Name="DNIS" Type="varchar" MaxLength="10" />
+    <Property Name="RECORD_TYPE" Type="varchar" MaxLength="20" />
+    <Property Name="ORIG_AGENT_ID" Type="int" />
+    <Property Name="ORDER_MANAGER_SW" Type="int" />
+    <Property Name="Port_Number" Type="varchar" MaxLength="2" />
+    <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
+    <Property Name="GK_Owned" Type="varchar" MaxLength="1" />
+    <Property Name="workgroup" Type="varchar" MaxLength="100" />
+    <Property Name="BAM_EMAIL" Type="varchar" MaxLength="100" />
+    <Property Name="NT_LOGIN_NAME" Type="varchar" MaxLength="25" />
+    <Property Name="TEST_AGENT" Type="bit" />
+    <Property Name="MIN_RECORDS" Type="int" />
+  </EntityType>
+  <EntityType Name="AGENT_CAMP_CRITERIA">
+    <Key>
+      <PropertyRef Name="AGENT_CAMP_CRITERIA_ID" />
+    </Key>
+    <Property Name="AGENT_CAMP_ID" Type="int" Nullable="false" />
+    <Property Name="PRIORITY" Type="int" Nullable="false" />
+    <Property Name="PERCENT_APPLIED" Type="int" Nullable="false" />
+    <Property Name="QUERY" Type="varchar" MaxLength="2000" />
+    <Property Name="DESCRIPTION" Type="varchar" MaxLength="255" />
+    <Property Name="AGENT_CAMP_CRITERIA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LAST_UPDATED_DATE" Type="datetime" />
+    <Property Name="LAST_UPDATED_BY" Type="int" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AGENT_CAMP_CRITERIA_MASTER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CriteriaName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ActiveSw" Type="bit" />
+  </EntityType>
+  <EntityType Name="LIST_META_DATA">
+    <Key>
+      <PropertyRef Name="LIST_META_DATA_ID" />
+    </Key>
+    <Property Name="LIST_META_DATA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LIST_NAME" Type="varchar" MaxLength="100" />
+    <Property Name="RECEIVED_DATE" Type="datetime" />
+    <Property Name="QUARTER" Type="varchar" MaxLength="10" />
+    <Property Name="LIST_ID" Type="varchar" MaxLength="10" />
+    <Property Name="IsOnDispReport" Type="bit" />
+    <Property Name="ActiveOrInactive" Type="varchar" MaxLength="10" />
+    <Property Name="LAST_TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+    <Property Name="records_received" Type="int" />
+    <Property Name="LIST_TYPE" Type="varchar" MaxLength="25" />
+    <Property Name="LIST_SEGMENT" Type="varchar" MaxLength="10" />
+  </EntityType>
+  <Association Name="FK__AGENT_CAM__AGENT__5D60DB10">
+    <End Role="AGENT_CAMP" Type="Self.AGENT_CAMP" Multiplicity="1" />
+    <End Role="AGENT_CAMP_CRITERIA" Type="Self.AGENT_CAMP_CRITERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENT_CAMP">
+        <PropertyRef Name="AGENT_CAMP_ID" />
+      </Principal>
+      <Dependent Role="AGENT_CAMP_CRITERIA">
+        <PropertyRef Name="AGENT_CAMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pd_cmcModelStoreContainer">
+    <EntitySet Name="AGENT_CAMP" EntityType="Self.AGENT_CAMP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AGENT_CAMP_CRITERIA" EntityType="Self.AGENT_CAMP_CRITERIA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AGENT_CAMP_CRITERIA_MASTER" EntityType="Self.AGENT_CAMP_CRITERIA_MASTER" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LIST_META_DATA" EntityType="Self.LIST_META_DATA" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__AGENT_CAM__AGENT__5D60DB10" Association="Self.FK__AGENT_CAM__AGENT__5D60DB10">
+      <End Role="AGENT_CAMP" EntitySet="AGENT_CAMP" />
+      <End Role="AGENT_CAMP_CRITERIA" EntitySet="AGENT_CAMP_CRITERIA" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

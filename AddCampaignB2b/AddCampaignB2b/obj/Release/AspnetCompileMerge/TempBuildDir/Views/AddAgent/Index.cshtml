@@ -1,0 +1,87 @@
+﻿@model IEnumerable<AddCampaignB2b.Models.AGENT_CAMP>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="gridtable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.COMMUNICATOR)
+        </th>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.MAX_RECORDS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CALLER_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DNIS)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Phone_Number)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.workgroup)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BAM_EMAIL)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NT_LOGIN_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MIN_RECORDS)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.COMMUNICATOR)
+            </td>
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.MAX_RECORDS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CALLER_ID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DNIS)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone_Number)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.workgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BAM_EMAIL)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NT_LOGIN_NAME)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MIN_RECORDS)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.AGENT_CAMP_ID }) | 
+                @Html.ActionLink("Criteria", "Index", "AddAgentCriteria", new { id = item.AGENT_CAMP_ID },null)
+                @*|@Html.ActionLink("Details", "Details", new { id = item.AGENT_CAMP_ID }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.AGENT_CAMP_ID })*@
+            </td>
+        </tr>
+    }
+
+</table>

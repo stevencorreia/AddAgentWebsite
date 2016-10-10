@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCampaignB2b", "AddCampaignB2b\AddCampaignB2b.csproj", "{2EA7CE3C-7BFF-4893-8B4C-4637E91FFFA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AddCampaignB2bUnitTest", "AddCampaignB2bUnitTest\AddCampaignB2bUnitTest.csproj", "{DDACA1B7-8106-4F6A-A566-E0346DC32853}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{1AA268F9-D4C4-4C55-A1B6-2C6EEED0FF1D}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 3
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://svrcmrtfs2:8080/tfs/itcs
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = AddCampaignB2b\\AddCampaignB2b.csproj
+		SccProjectName1 = AddCampaignB2b
+		SccLocalPath1 = AddCampaignB2b
+		SccProjectUniqueName2 = AddCampaignB2bUnitTest\\AddCampaignB2bUnitTest.csproj
+		SccProjectName2 = AddCampaignB2bUnitTest
+		SccLocalPath2 = AddCampaignB2bUnitTest
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2EA7CE3C-7BFF-4893-8B4C-4637E91FFFA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2EA7CE3C-7BFF-4893-8B4C-4637E91FFFA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2EA7CE3C-7BFF-4893-8B4C-4637E91FFFA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2EA7CE3C-7BFF-4893-8B4C-4637E91FFFA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDACA1B7-8106-4F6A-A566-E0346DC32853}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDACA1B7-8106-4F6A-A566-E0346DC32853}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDACA1B7-8106-4F6A-A566-E0346DC32853}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDACA1B7-8106-4F6A-A566-E0346DC32853}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

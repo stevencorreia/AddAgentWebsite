@@ -1,0 +1,12 @@
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\AddCampaignB2bUnitTest.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\AddCampaignB2bUnitTest.pdb
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\AddCampaignB2b.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\System.Web.Mvc.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\EntityFramework.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\System.Web.Optimization.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\AddCampaignB2b.pdb
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\System.Web.Mvc.xml
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\bin\Debug\EntityFramework.xml
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\obj\Debug\AddCampaignB2bUnitTest.csprojResolveAssemblyReference.cache
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\obj\Debug\AddCampaignB2bUnitTest.dll
+C:\Code\ITCS\Business Services\AddCampaignB2b\AddCampaignB2bUnitTest\obj\Debug\AddCampaignB2bUnitTest.pdb

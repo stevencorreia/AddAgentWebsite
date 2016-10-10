@@ -1,0 +1,100 @@
+﻿@model AddCampaignB2b.Models.AGENT_CAMP_CRITERIA
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AGENT_CAMP_CRITERIA</legend>
+
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.PRIORITY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.PRIORITY)
+                @Html.ValidationMessageFor(model => model.PRIORITY)
+            </div>*@
+        @Html.HiddenFor(model => model.AGENT_CAMP_CRITERIA_ID)
+        @Html.HiddenFor(model => model.AGENT_CAMP_ID)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PERCENT_APPLIED)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PERCENT_APPLIED)
+            @Html.ValidationMessageFor(model => model.PERCENT_APPLIED)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LIST)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.selectedListID, Model.LIST, "---Select List---")
+            @Html.ValidationMessageFor(model => model.selectedListID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.SEGMENT_CODE)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.selectedSegmentCode, Model.SEGMENT_CODE, "--- Select Segment----")
+            @Html.ValidationMessageFor(model => model.selectedSegmentCode)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CRITERIA1)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.SelectedCRITERIA1, Model.CRITERIA1, "---- Select Criteria 1----")
+            @Html.ValidationMessageFor(model => model.SelectedCRITERIA1)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("SelectedCRITERIAValue1")
+            @Html.ValidationMessageFor(model => model.CRITERIA1)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CRITERIA2)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.SelectedCRITERIA2, Model.CRITERIA2, "---- Select Criteria 2----")
+            @Html.ValidationMessageFor(model => model.SelectedCRITERIA2)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("SelectedCRITERIAValue2")
+            @Html.ValidationMessageFor(model => model.SelectedCRITERIAValue2)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CRITERIA3)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(x => x.SelectedCRITERIA3, Model.CRITERIA3, "---- Select Criteria 3----")
+            @Html.ValidationMessageFor(model => model.SelectedCRITERIA3)
+        </div>
+        <div class="editor-field">
+            @Html.TextBox("SelectedCRITERIAValue3")
+            @Html.ValidationMessageFor(model => model.SelectedCRITERIAValue3)
+        </div>
+        @*<div class="editor-label">
+                @Html.LabelFor(model => model.QUERY)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.QUERY)
+                @Html.ValidationMessageFor(model => model.QUERY)
+            </div>*@
+
+        <p>
+            <input type="submit" value="Create" onclick="return confirm('are you sure you want to submit the changes?')" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { id = ViewBag.AgentCampID })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

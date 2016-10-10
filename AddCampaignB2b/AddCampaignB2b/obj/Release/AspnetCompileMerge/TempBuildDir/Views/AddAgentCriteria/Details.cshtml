@@ -1,0 +1,71 @@
+﻿@model AddCampaignB2b.Models.AGENT_CAMP_CRITERIA
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>AGENT_CAMP_CRITERIA</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AGENT_CAMP.COMMUNICATOR)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AGENT_CAMP.COMMUNICATOR)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PRIORITY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PRIORITY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.PERCENT_APPLIED)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.PERCENT_APPLIED)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.QUERY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.QUERY)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DESCRIPTION)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DESCRIPTION)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AGENT_CAMP_CRITERIA_ID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AGENT_CAMP_CRITERIA_ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LAST_UPDATED_DATE)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LAST_UPDATED_DATE)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LAST_UPDATED_BY)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LAST_UPDATED_BY)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

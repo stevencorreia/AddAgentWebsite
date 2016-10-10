@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5a4b8d3f2ed1478d9716ee0bb8938173" Name="Diagram1" ZoomLevel="97">
+        <EntityTypeShape EntityType="pd_cmcModel.AGENT_CAMP" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="pd_cmcModel.AGENT_CAMP_CRITERIA" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <AssociationConnector Association="pd_cmcModel.FK__AGENT_CAM__AGENT__17C286CF" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="pd_cmcModel.AGENT_CAMP_CRITERIA_MASTER" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="pd_cmcModel.LIST_META_DATA" Width="1.5" PointX="5.375" PointY="0.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

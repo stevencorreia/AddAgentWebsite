@@ -1,0 +1,479 @@
+﻿@using PagedList;
+@using PagedList.Mvc;
+@*@model IPagedList<AddCampaignB2b.Models.AGENT_CAMP>*@
+
+@{
+    ViewBag.Title = "Index";
+}
+@Scripts.Render("~/bundles/datatables")
+@Styles.Render("~/Content/DataTables/css/datatablesCSS")
+
+<div class="container-fluid">
+    <div class="row">
+        <h1>Agents</h1>
+        <button id="addRow" class="btn btn-primary">
+            <span>Add Agent</span> <span class="glyphicon glyphicon-plus-sign"></span>
+        </button>
+        <table id="Communicator" class="display">
+            <thead>
+                <tr>
+                    <th>Select BAM</th>
+                    <th>DNIS</th>
+                    <th>Start Date</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Workgroup</th>
+                    <th>NT login</th>
+                    <th>Max Records</th>
+                    <th>Min Records</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+    <div class="row">
+        <h2></h2>
+        <table id="CustomerCriteria" class="table table-striped" cellspacing="0"></table>
+    </div>
+</div>
+<div id="divEditAgent" class="modalPopup hide" style="overflow-x: hidden">
+    <div class="row">
+        <label class="control-label col-sm-4">Agent Id:</label>
+        <label id="lblAgentID" class="control-label col-sm-8"></label>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Comm Initials:</label>
+        <input id="txtInitials" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">End Date:</label>
+        <input id="txtEndDate" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Max Records:</label>
+        <input id="txtMax" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Min Records:</label>
+        <input id="txtMin" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Caller ID:</label>
+        <input id="txtCallerID" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">DNIS:</label>
+        <input id="txtDNIS" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Is Order Manager:</label>
+        <select id="ddlOM" class="selectpicker col-sm-5"></select>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Phone:</label>
+        <input id="txtPhone" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Workgroup:</label>
+        <input id="txtWorkgroup" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Email:</label>
+        <input id="txtEmail" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">NT Login:</label>
+        <input id="txtNT" type="text" class="col-sm-8 form-control"/>
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <input type="button" id="btnEditAgentSave" value="Save" class="col-sm-3 col-sm-offset-2"/>
+        <input type="button" id="btnEditAgentCancel" value="Cancel" class="col-sm-3 col-sm-offset-2"/>
+    </div>
+</div>
+<div id="divAddAgent" class="modalPopup hide" style="overflow-x:hidden">
+    <div class="row">
+        <label class="control-label col-sm-4">Comm Initials:</label>
+        <input id="txtAddInitials" type="text" class="col-sm-8 form-control"/>
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Start Date:</label>
+        <input id="txtStartDate" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Max Records:</label>
+        <input id="txtAddMax" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Min Records:</label>
+        <input id="txtAddMin" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Caller ID:</label>
+        <input id="txtAddCallerID" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">DNIS:</label>
+        <input id="txtAddDNIS" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row">
+        <label class="control-label col-sm-4">Is Order Manager:</label>
+        <select id="ddlAddOM" class="selectpicker col-sm-5"></select>
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Phone:</label>
+        <input id="txtAddPhone" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Workgroup:</label>
+        <input id="txtAddWorkgroup" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">Email:</label>
+        <input id="txtAddEmail" type="text" class="col-sm-8 form-control" />
+    </div>
+    <div class="row" style="margin-top: 10px">
+        <label class="control-label col-sm-4">NT Login:</label>
+        <input id="txtAddNT" type="text" class="col-sm-8 form-control" />
+    </div>
+
+    <div class="row" style="margin-top: 10px">
+        <input type="button" id="btnAddAgentSave" value="Save" class="col-sm-3 col-sm-offset-2" />
+        <input type="button" id="btnAddAgentCancel" value="Cancel" class="col-sm-3 col-sm-offset-2" />
+    </div>
+</div>
+<div id="background" class="modalBackground"></div>
+<script type="text/javascript">
+    $(document)
+        .ready(function () {
+            $('#ddlOM').empty();
+            $('#ddlOM').append('<OPTION>----Select----</OPTION>');
+            $('#ddlOM').append('<OPTION value ="1">Yes</OPTION>');
+            $('#ddlOM').append('<OPTION value="2">No</OPTION>');
+            $('#ddlAddOM').empty();
+            $('#ddlAddOM').append('<OPTION>----Select----</OPTION>');
+            $('#ddlAddOM').append('<OPTION value ="1">Yes</OPTION>');
+            $('#ddlAddOM').append('<OPTION value="2">No</OPTION>');
+            $('#txtEndDate').datepicker();
+            var table = $('#Communicator')
+                .DataTable({
+                    "ajax": "@(ViewBag.ServiceAddress)/Values",
+                    "columns": [
+                        {
+                            "data": "AGENT_CAMP_ID",
+                            "render": function (data, type, row) {
+                                return "<a href ='JavaScript:;' id= 'rowAgentID' onclick= 'criteriaClicked(this)' data-toggle = 'tooltop' title='Edit Agent'>" + row.COMMUNICATOR + "</a>";
+                            }
+                        },
+                        { "data": "DNIS" },
+                        {
+                            "data": "START_DATE",
+                            "render": function (data, type, row) {
+                                var date = new Date(data);
+                                var month = date.getMonth() + 1;
+                                return date.getDate() + "/" + month + "/" + date.getFullYear();
+                            }
+                        },
+                        {
+                            "data": "BAM_EMAIL" //,"render": function (data) {return data.substring(0, 15);}
+                        },
+                        { "data": "Phone_Number" },
+                        { "data": "workgroup" },
+                        {
+                            "data": "NT_LOGIN_NAME",
+                            "render": function (data) {
+                                return data.substring(12);
+                            }
+                        },
+                        { "data": "MAX_RECORDS" },
+                        { "data": "MIN_RECORDS" },
+                        {
+                            "data": "AGENT_CAMP_ID",
+                            "render": function (data, type, row) {
+                                return "<button class='btn btn-danger' id= rowAgentID' data-AgentCampID='" +
+                                    data +
+                                    "' onclick= 'editAgentClicked(this)' data-toggle = 'tooltop' title='Criteria'><span class='glyphicon glyphicon-edit'></span></button>";
+                                //return "<button class='btn btn-danger' data-AgentCampID='" + data + "' id= rowAgentID' onclick= 'editAgentClicked(this)' data-toggle = 'tooltop' title='Criteria'><span class='glyphicon glyphicon-edit'></span></button>";
+                            }
+                        }
+                    ],
+                    "order": [[2, "asc"]],
+                    "lengthChange": true
+                });
+            setTimeout(function () {
+                table.buttons()
+                    .container()
+                    .appendTo('#Communicator_wrapper .col-sm-6:eq(0)');
+            },
+                250);
+
+            $('#btnEditAgentCancel')
+                .click(function (e) {
+                    $('#divEditAgent').addClass('hide');
+                    $('#background').fadeOut();
+                    clearEditedField();
+                });
+            $('#btnAddAgentCancel')
+                .click(function (e) {
+                    $('#divAddAgent').addClass('hide');
+                    $('#background').fadeOut();
+                });
+
+            $('#btnEditAgentSave').click(function (e) {
+                var requestdata = {
+                    AGENT_CAMP_ID: $("#lblAgentID").text(),
+                    END_DATE: $('#txtEndDate').val(),
+                    MIN_RECORDS: $('#txtMin').val(),
+                    MAX_RECORDS: $('#txtMax').val(),
+                    workgroup: $('#txtWorkgroup').val(),
+                    Phone_Number: $('#txtPhone').val(),
+                    BAM_EMAIL: $('#txtEmail').val(),
+                    DNIS: $('#txtDNIS').val(),
+                    COMMUNICATOR: $('#txtInitials').val(),
+                    CALLER_ID: $('#txtCallerID').val(),
+                    ORDER_MANAGER_SW: $('#ddlOM').val() === "2" ? 0 : $('#ddlOM').val(),
+                    NT_LOGIN_NAME: $('#txtNT').val()
+                }
+
+                $.ajax({
+                    url: "@(ViewBag.ServiceAddress)/Values/" + $("#lblAgentID").text(),
+                    type: "PUT",
+                    datatype: "json",
+                    data: JSON.stringify(requestdata),
+                    contentType: "application/json; charset=utf-8",
+                    async: false,
+                    success: function (result) {
+                        $('#divEditAgent').addClass('hide');
+                        $('#background').fadeOut();
+                        clearEditedField();
+                        $('#Communicator').dataTable().api().ajax.reload();
+                    },
+                    error: function (jqxhr, status, errorThrown) {
+                        alert('Error saving data!!');
+                    }
+                });
+            });
+            $('#btnAddAgentSave').click(function (e) {
+                var requestdata = {
+                    START_DATE: $('#txtStartDate').val(),
+                    MIN_RECORDS: $('#txtAddMin').val(),
+                    MAX_RECORDS: $('#txtAddMax').val(),
+                    workgroup: $('#txtAddWorkgroup').val(),
+                    Phone_Number: $('#txtAddPhone').val(),
+                    BAM_EMAIL: $('#txtAddEmail').val(),
+                    DNIS: $('#txtAddDNIS').val(),
+                    COMMUNICATOR: $('#txtAddInitials').val(),
+                    CALLER_ID: $('#txtAddCallerID').val(),
+                    ORDER_MANAGER_SW: $('#ddlAddOM').val() === "2" ? 0 : $('#ddlOM').val(),
+                    NT_LOGIN_NAME: $('#txtAddNT').val()
+                }
+
+                $.ajax({
+                    url: "@(ViewBag.ServiceAddress)/Values/",
+                    type: "POST",
+                    datatype: "json",
+                    data: JSON.stringify(requestdata),
+                    contentType: "application/json; charset=utf-8",
+                    async: false,
+                    success: function (result) {
+                        $('#divAddAgent').addClass('hide');
+                        $('#background').fadeOut();
+                        $('#Communicator').dataTable().api().ajax.reload();
+                    },
+                    error: function (jqxhr, status, errorThrown) {
+                        alert('Error saving data!!');
+                    }
+                });
+            });
+        });
+
+    function clearEditedField() {
+        $("#lblAgentID").text('');
+        $('#txtEndDate').val('');
+        $('#txtMin').val('');
+        $('#txtMax').val('');
+        $('#txtWorkgroup').val('');
+        $('#txtPhone').val('');
+        $('#txtEmail').val('');
+        $('#txtDNIS').val('');
+        $('#txtInitials').val('');
+        $('#txtCallerID').val('');
+        $('#ddlOM').val('');
+        $('#txtNT').val('');
+    }
+
+    function editAgentClicked(e) {
+        $("#background").css({ "opacity": "0.7" }).show();
+        $('#divEditAgent').hide();
+        $('#divEditAgent').removeClass('hide');
+        $('#divEditAgent').show();
+        var top = ($(window).height() - $('#divEditAgent').height()) / 2 + $(window).scrollTop();
+        var left = ($(window).width() - $('#divEditAgent').width()) / 2 + $(window).scrollLeft();
+        $('#divEditAgent').css({ left: left, top: top, overflow: 'auto' });
+        $('#lblAgentID').text($(e).attr('data-AgentCampID'));
+        $('#txtMin').val($(e).parent()[0].previousSibling.innerText);
+        $('#txtMax').val($(e).parent()[0].previousSibling.previousSibling.innerText);
+        $('#txtNT').val($(e).parent()[0].previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtWorkgroup')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtPhone')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .innerText);
+        $('#txtEmail')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.innerText);
+        $('#txtDNIS')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtInitials')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.previousSibling.previousSibling.previousSibling.innerText);
+
+        $.ajax({
+            url: "@(ViewBag.ServiceAddress)/Values/" + $(e).attr('data-AgentCampID'),
+            type: "GET",
+            datatype: "json",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (result) {
+                var data = JSON.parse(result);
+                $('#txtCallerID').val(data.CALLER_ID);
+                var temp;
+                if (data.ORDER_MANAGER_SW == null)
+                    temp = 0;
+                else if (data.ORDER_MANAGER_SW === 1)
+                    temp = 1;
+                else
+                    temp = 2;
+                $('#txtEndDate').val(data.END_DATE);
+                $('#ddlOM').prop('selectedIndex', temp);
+                $('#txtNT').val(data.NT_LOGIN_NAME);
+            },
+            error: function (jqxhr, status, errorThrown) {
+                alert('Error loading employee data!!');
+            }
+        });
+    }
+    function addAgentClicked(e) {
+        $("#background").css({ "opacity": "0.7" }).show();
+        $('#divAddAgent').hide();
+        $('#divAddAgent').removeClass('hide');
+        $('#divAddAgent').show();
+        var top = ($(window).height() - $('#divAddAgent').height()) / 2 + $(window).scrollTop();
+        var left = ($(window).width() - $('#divAddAgent').width()) / 2 + $(window).scrollLeft();
+        $('#divAddAgent').css({ left: left, top: top, overflow: 'auto' });
+        $('#lblAgentID').text($(e).attr('data-AgentCampID'));
+        $('#txtMin').val($(e).parent()[0].previousSibling.innerText);
+        $('#txtMax').val($(e).parent()[0].previousSibling.previousSibling.innerText);
+        $('#txtNT').val($(e).parent()[0].previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtWorkgroup')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtPhone')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .innerText);
+        $('#txtEmail')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.innerText);
+        $('#txtDNIS')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.previousSibling.previousSibling.innerText);
+        $('#txtInitials')
+            .val($(e).parent()[0].previousSibling.previousSibling.previousSibling.previousSibling.previousSibling
+                .previousSibling.previousSibling.previousSibling.previousSibling.innerText);
+
+        $.ajax({
+            url: "@(ViewBag.ServiceAddress)/Values/" + $(e).attr('data-AgentCampID'),
+            type: "GET",
+            datatype: "json",
+            contentType: "application/json; charset=utf-8",
+            async: false,
+            success: function (result) {
+                var data = JSON.parse(result);
+                $('#txtCallerID').val(data.CALLER_ID);
+                var temp;
+                if (data.ORDER_MANAGER_SW == null)
+                    temp = 0;
+                else if (data.ORDER_MANAGER_SW === 1)
+                    temp = 1;
+                else
+                    temp = 2;
+                $('#txtEndDate').val(data.END_DATE);
+                $('#ddlOM').prop('selectedIndex', temp);
+                $('#txtNT').val(data.NT_LOGIN_NAME);
+            },
+            error: function (jqxhr, status, errorThrown) {
+                alert('Error loading employee data!!');
+            }
+        });
+    }
+    //function commit(data) {
+    //    console.log("commit called");
+    //    var list = ['a', 'b'];
+    //    var info = $("td input[type=text]").each(function () {
+    //        this.outerHTML = this.value;
+    //        list.push(this.value);
+    //    });
+    //    list = list.concat(['4', '5']);
+    //    var row = $(data).closest('tr');
+    //    var nRow = row[0];
+
+    //    var oTable = $('#Communicator').dataTable();
+    //    oTable.fnUpdate(list, nRow);
+    //}
+
+    //function deleteRow(data) {
+    //    var row = $(data).closest('tr');
+    //    var nRow = row[0];
+    //    $('#Communicator').dataTable().fnDeleteRow(nRow);
+    //}
+
+    //var counter = 1;
+    //function add_row() {
+    //    var tbl = $('#Communicator').DataTable();
+    //    tbl.row.add([
+    //            counter + '.1',
+    //            counter + '.2',
+    //            counter + '.3',
+    //            counter + '.4',
+    //            counter + '.5',
+    //            counter + '.6',
+    //            counter + '.7',
+    //            counter + '.8',
+    //            counter + '.9'
+    //    ]).draw(false);
+    //}
+    function rowEditClicked(myId) {
+        $.ajax({
+            type: ""
+        });
+    }
+    function rowClientAbbrClick(myId) {
+        if (counter > 1)
+            $("#CustomerCriteria").dataTable().fnDestroy();
+        $("#CustomerCriteria").dataTable({
+            "ajax": "http://localhost:51871/api/criteria?agentCampId=" + $(myId)[0].innerText,
+
+            "columns": [
+                {
+                    "data": "AGENT_CAMP_CRITERIA_ID",
+                    "title": "Edit",
+                    "render": function (data) { return "<a href='javascript:;' id='rowAGENT_CAMP_CRITERIA_ID' onclick='rowClientAbbrClick(this)' data-toggle='tooltip' title='Click for Details'>" + data + "</a>"; }
+                },
+                {
+                    "data": "AGENT_CAMP_ID",
+                    "title": "Agent ID"
+                },
+                {
+                    "data": "PERCENT_APPLIED",
+                    "title": "Percentage"
+                },
+                {
+                    "data": "QUERY",
+                    "title": "Criteria"
+                }
+            ]
+        });
+        counter++;
+        $("#CustomerCriteriaDiv").css({ "border": "solid" });
+    }
+</script>

@@ -1,0 +1,111 @@
+﻿@model AddCampaignB2b.Models.AGENT_CAMP
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>AGENT_CAMP</legend>
+
+        @Html.HiddenFor(model => model.AGENT_CAMP_ID)
+        <div class="editor-label">
+            @Html.LabelFor(model => model.COMMUNICATOR)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.COMMUNICATOR)
+            @Html.ValidationMessageFor(model => model.COMMUNICATOR)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MAX_RECORDS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MAX_RECORDS)
+            @Html.ValidationMessageFor(model => model.MAX_RECORDS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MIN_RECORDS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MIN_RECORDS)
+            @Html.ValidationMessageFor(model => model.MIN_RECORDS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CALLER_ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CALLER_ID)
+            @Html.ValidationMessageFor(model => model.CALLER_ID)
+        </div>
+
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DNIS)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DNIS)
+            @Html.ValidationMessageFor(model => model.DNIS)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ORDER_MANAGER_SW)
+        </div>
+        <div class="editor-field">
+            @Html.DropDownListFor(model=> model.ORDER_MANAGER_SW, new[] { new SelectListItem { Text = "True", Value = "1" }, new SelectListItem { Text = "False", Value = "0" } })
+            @Html.ValidationMessageFor(model => model.ORDER_MANAGER_SW)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Phone_Number)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Phone_Number)
+            @Html.ValidationMessageFor(model => model.Phone_Number)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.workgroup)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.workgroup)
+            @Html.ValidationMessageFor(model => model.workgroup)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.BAM_EMAIL)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.BAM_EMAIL)
+            @Html.ValidationMessageFor(model => model.BAM_EMAIL)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NT_LOGIN_NAME)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NT_LOGIN_NAME)
+            @Html.ValidationMessageFor(model => model.NT_LOGIN_NAME)
+        </div>
+
+      
+        <p>
+            <input type="submit" value="Submit" onclick="return confirm('are you sure you want to submit the changes?')"/>
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

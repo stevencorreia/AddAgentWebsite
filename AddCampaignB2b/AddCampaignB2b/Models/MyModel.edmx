@@ -1,0 +1,230 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="pd_cmcModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="AGENT_CAMP">
+          <Key>
+            <PropertyRef Name="AGENT_CAMP_ID" />
+          </Key>
+          <Property Name="AGENT_CAMP_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="COMMUNICATOR" Type="varchar" MaxLength="25" />
+          <Property Name="CAMP_ABBR" Type="varchar" MaxLength="8" />
+          <Property Name="ACTIVE_SW" Type="bit" />
+          <Property Name="START_DATE" Type="datetime" />
+          <Property Name="END_DATE" Type="datetime" />
+          <Property Name="LAST_UPDATED_BY" Type="int" />
+          <Property Name="LAST_UPDATED_DATE" Type="datetime" />
+          <Property Name="LAST_TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="MAX_RECORDS" Type="int" />
+          <Property Name="AGENT_PRIORITY" Type="int" />
+          <Property Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" Type="bit" />
+          <Property Name="EMPLOYEE_ID" Type="int" />
+          <Property Name="CALLER_ID" Type="varchar" MaxLength="11" />
+          <Property Name="REGION" Type="varchar" MaxLength="20" />
+          <Property Name="REGION_ID" Type="int" />
+          <Property Name="PROGRAM_START_DATE" Type="datetime" />
+          <Property Name="DNIS" Type="varchar" MaxLength="10" />
+          <Property Name="RECORD_TYPE" Type="varchar" MaxLength="20" />
+          <Property Name="ORIG_AGENT_ID" Type="int" />
+          <Property Name="ORDER_MANAGER_SW" Type="int" />
+          <Property Name="Port_Number" Type="varchar" MaxLength="2" />
+          <Property Name="Phone_Number" Type="varchar" MaxLength="10" />
+          <Property Name="GK_Owned" Type="varchar" MaxLength="1" />
+          <Property Name="workgroup" Type="varchar" MaxLength="100" />
+          <Property Name="BAM_EMAIL" Type="varchar" MaxLength="100" />
+          <Property Name="NT_LOGIN_NAME" Type="varchar" MaxLength="25" />
+          <Property Name="TEST_AGENT" Type="bit" />
+          <Property Name="MIN_RECORDS" Type="int" />
+        </EntityType>
+        <EntityType Name="AGENT_CAMP_CRITERIA">
+          <Key>
+            <PropertyRef Name="AGENT_CAMP_CRITERIA_ID" />
+          </Key>
+          <Property Name="AGENT_CAMP_ID" Type="int" Nullable="false" />
+          <Property Name="PRIORITY" Type="int" Nullable="false" />
+          <Property Name="PERCENT_APPLIED" Type="int" Nullable="false" />
+          <Property Name="QUERY" Type="varchar" MaxLength="2000" />
+          <Property Name="DESCRIPTION" Type="varchar" MaxLength="255" />
+          <Property Name="AGENT_CAMP_CRITERIA_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LAST_UPDATED_DATE" Type="datetime" />
+          <Property Name="LAST_UPDATED_BY" Type="int" />
+          <Property Name="LAST_TIMESTAMP" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AGENT_CAM__AGENT__17C286CF">
+          <End Role="AGENT_CAMP" Type="Self.AGENT_CAMP" Multiplicity="1" />
+          <End Role="AGENT_CAMP_CRITERIA" Type="Self.AGENT_CAMP_CRITERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT_CAMP">
+              <PropertyRef Name="AGENT_CAMP_ID" />
+            </Principal>
+            <Dependent Role="AGENT_CAMP_CRITERIA">
+              <PropertyRef Name="AGENT_CAMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pd_cmcModelStoreContainer">
+          <EntitySet Name="AGENT_CAMP" EntityType="Self.AGENT_CAMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AGENT_CAMP_CRITERIA" EntityType="Self.AGENT_CAMP_CRITERIA" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AGENT_CAM__AGENT__17C286CF" Association="Self.FK__AGENT_CAM__AGENT__17C286CF">
+            <End Role="AGENT_CAMP" EntitySet="AGENT_CAMP" />
+            <End Role="AGENT_CAMP_CRITERIA" EntitySet="AGENT_CAMP_CRITERIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="pd_cmcModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="AGENT_CAMP">
+          <Key>
+            <PropertyRef Name="AGENT_CAMP_ID" />
+          </Key>
+          <Property Name="AGENT_CAMP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="COMMUNICATOR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="CAMP_ABBR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+          <Property Name="ACTIVE_SW" Type="Boolean" />
+          <Property Name="START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="END_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATED_BY" Type="Int32" />
+          <Property Name="LAST_UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="MAX_RECORDS" Type="Int32" />
+          <Property Name="AGENT_PRIORITY" Type="Int32" />
+          <Property Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" Type="Boolean" />
+          <Property Name="EMPLOYEE_ID" Type="Int32" />
+          <Property Name="CALLER_ID" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <Property Name="REGION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="REGION_ID" Type="Int32" />
+          <Property Name="PROGRAM_START_DATE" Type="DateTime" Precision="3" />
+          <Property Name="DNIS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="RECORD_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="ORIG_AGENT_ID" Type="Int32" />
+          <Property Name="ORDER_MANAGER_SW" Type="Int32" />
+          <Property Name="Port_Number" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+          <Property Name="Phone_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="GK_Owned" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="workgroup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="BAM_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="NT_LOGIN_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="TEST_AGENT" Type="Boolean" />
+          <Property Name="MIN_RECORDS" Type="Int32" />
+          <NavigationProperty Name="AGENT_CAMP_CRITERIA" Relationship="Self.FK__AGENT_CAM__AGENT__17C286CF" FromRole="AGENT_CAMP" ToRole="AGENT_CAMP_CRITERIA" />
+        </EntityType>
+        <EntityType Name="AGENT_CAMP_CRITERIA">
+          <Key>
+            <PropertyRef Name="AGENT_CAMP_CRITERIA_ID" />
+          </Key>
+          <Property Name="AGENT_CAMP_ID" Type="Int32" Nullable="false" />
+          <Property Name="PRIORITY" Type="Int32" Nullable="false" />
+          <Property Name="PERCENT_APPLIED" Type="Int32" Nullable="false" />
+          <Property Name="QUERY" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+          <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="AGENT_CAMP_CRITERIA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LAST_UPDATED_DATE" Type="DateTime" Precision="3" />
+          <Property Name="LAST_UPDATED_BY" Type="Int32" />
+          <Property Name="LAST_TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="AGENT_CAMP" Relationship="Self.FK__AGENT_CAM__AGENT__17C286CF" FromRole="AGENT_CAMP_CRITERIA" ToRole="AGENT_CAMP" />
+        </EntityType>
+        <Association Name="FK__AGENT_CAM__AGENT__17C286CF">
+          <End Role="AGENT_CAMP" Type="Self.AGENT_CAMP" Multiplicity="1" />
+          <End Role="AGENT_CAMP_CRITERIA" Type="Self.AGENT_CAMP_CRITERIA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AGENT_CAMP">
+              <PropertyRef Name="AGENT_CAMP_ID" />
+            </Principal>
+            <Dependent Role="AGENT_CAMP_CRITERIA">
+              <PropertyRef Name="AGENT_CAMP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="pd_cmcEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AGENT_CAMP" EntityType="Self.AGENT_CAMP" />
+          <EntitySet Name="AGENT_CAMP_CRITERIA" EntityType="Self.AGENT_CAMP_CRITERIA" />
+          <AssociationSet Name="FK__AGENT_CAM__AGENT__17C286CF" Association="Self.FK__AGENT_CAM__AGENT__17C286CF">
+            <End Role="AGENT_CAMP" EntitySet="AGENT_CAMP" />
+            <End Role="AGENT_CAMP_CRITERIA" EntitySet="AGENT_CAMP_CRITERIA" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="pd_cmcModelStoreContainer" CdmEntityContainer="pd_cmcEntities">
+          <EntitySetMapping Name="AGENT_CAMP">
+            <EntityTypeMapping TypeName="pd_cmcModel.AGENT_CAMP">
+              <MappingFragment StoreEntitySet="AGENT_CAMP">
+                <ScalarProperty Name="AGENT_CAMP_ID" ColumnName="AGENT_CAMP_ID" />
+                <ScalarProperty Name="COMMUNICATOR" ColumnName="COMMUNICATOR" />
+                <ScalarProperty Name="CAMP_ABBR" ColumnName="CAMP_ABBR" />
+                <ScalarProperty Name="ACTIVE_SW" ColumnName="ACTIVE_SW" />
+                <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+                <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+                <ScalarProperty Name="LAST_UPDATED_BY" ColumnName="LAST_UPDATED_BY" />
+                <ScalarProperty Name="LAST_UPDATED_DATE" ColumnName="LAST_UPDATED_DATE" />
+                <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+                <ScalarProperty Name="MAX_RECORDS" ColumnName="MAX_RECORDS" />
+                <ScalarProperty Name="AGENT_PRIORITY" ColumnName="AGENT_PRIORITY" />
+                <ScalarProperty Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" ColumnName="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" />
+                <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+                <ScalarProperty Name="CALLER_ID" ColumnName="CALLER_ID" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+                <ScalarProperty Name="PROGRAM_START_DATE" ColumnName="PROGRAM_START_DATE" />
+                <ScalarProperty Name="DNIS" ColumnName="DNIS" />
+                <ScalarProperty Name="RECORD_TYPE" ColumnName="RECORD_TYPE" />
+                <ScalarProperty Name="ORIG_AGENT_ID" ColumnName="ORIG_AGENT_ID" />
+                <ScalarProperty Name="ORDER_MANAGER_SW" ColumnName="ORDER_MANAGER_SW" />
+                <ScalarProperty Name="Port_Number" ColumnName="Port_Number" />
+                <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+                <ScalarProperty Name="GK_Owned" ColumnName="GK_Owned" />
+                <ScalarProperty Name="workgroup" ColumnName="workgroup" />
+                <ScalarProperty Name="BAM_EMAIL" ColumnName="BAM_EMAIL" />
+                <ScalarProperty Name="NT_LOGIN_NAME" ColumnName="NT_LOGIN_NAME" />
+                <ScalarProperty Name="TEST_AGENT" ColumnName="TEST_AGENT" />
+                <ScalarProperty Name="MIN_RECORDS" ColumnName="MIN_RECORDS" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AGENT_CAMP_CRITERIA">
+            <EntityTypeMapping TypeName="pd_cmcModel.AGENT_CAMP_CRITERIA">
+              <MappingFragment StoreEntitySet="AGENT_CAMP_CRITERIA">
+                <ScalarProperty Name="AGENT_CAMP_ID" ColumnName="AGENT_CAMP_ID" />
+                <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+                <ScalarProperty Name="PERCENT_APPLIED" ColumnName="PERCENT_APPLIED" />
+                <ScalarProperty Name="QUERY" ColumnName="QUERY" />
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="AGENT_CAMP_CRITERIA_ID" ColumnName="AGENT_CAMP_CRITERIA_ID" />
+                <ScalarProperty Name="LAST_UPDATED_DATE" ColumnName="LAST_UPDATED_DATE" />
+                <ScalarProperty Name="LAST_UPDATED_BY" ColumnName="LAST_UPDATED_BY" />
+                <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

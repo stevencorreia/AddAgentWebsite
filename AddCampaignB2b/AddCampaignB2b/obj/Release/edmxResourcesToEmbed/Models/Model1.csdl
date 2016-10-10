@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="pd_cmcModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+  <EntityType Name="AGENT_CAMP">
+    <Key>
+      <PropertyRef Name="AGENT_CAMP_ID" />
+    </Key>
+    <Property Name="AGENT_CAMP_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="COMMUNICATOR" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="CAMP_ABBR" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVE_SW" Type="Boolean" />
+    <Property Name="START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="END_DATE" Type="DateTime" Precision="3" />
+    <Property Name="LAST_UPDATED_BY" Type="Int32" />
+    <Property Name="LAST_UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="LAST_TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="MAX_RECORDS" Type="Int32" />
+    <Property Name="AGENT_PRIORITY" Type="Int32" />
+    <Property Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" Type="Boolean" />
+    <Property Name="EMPLOYEE_ID" Type="Int32" />
+    <Property Name="CALLER_ID" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+    <Property Name="REGION" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="REGION_ID" Type="Int32" />
+    <Property Name="PROGRAM_START_DATE" Type="DateTime" Precision="3" />
+    <Property Name="DNIS" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="RECORD_TYPE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ORIG_AGENT_ID" Type="Int32" />
+    <Property Name="ORDER_MANAGER_SW" Type="Int32" />
+    <Property Name="Port_Number" Type="String" MaxLength="2" FixedLength="false" Unicode="false" />
+    <Property Name="Phone_Number" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="GK_Owned" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="workgroup" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="BAM_EMAIL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="NT_LOGIN_NAME" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="TEST_AGENT" Type="Boolean" />
+    <Property Name="MIN_RECORDS" Type="Int32" />
+    <NavigationProperty Name="AGENT_CAMP_CRITERIA" Relationship="Self.FK__AGENT_CAM__AGENT__17C286CF" FromRole="AGENT_CAMP" ToRole="AGENT_CAMP_CRITERIA" />
+  </EntityType>
+  <EntityType Name="AGENT_CAMP_CRITERIA">
+    <Key>
+      <PropertyRef Name="AGENT_CAMP_CRITERIA_ID" />
+    </Key>
+    <Property Name="AGENT_CAMP_ID" Type="Int32" Nullable="false" />
+    <Property Name="PRIORITY" Type="Int32" Nullable="false" />
+    <Property Name="PERCENT_APPLIED" Type="Int32" Nullable="false" />
+    <Property Name="QUERY" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="AGENT_CAMP_CRITERIA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <Property Name="LAST_UPDATED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="LAST_UPDATED_BY" Type="Int32" />
+    <Property Name="LAST_TIMESTAMP" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+    <NavigationProperty Name="AGENT_CAMP" Relationship="Self.FK__AGENT_CAM__AGENT__17C286CF" FromRole="AGENT_CAMP_CRITERIA" ToRole="AGENT_CAMP" />
+  </EntityType>
+  <Association Name="FK__AGENT_CAM__AGENT__17C286CF">
+    <End Role="AGENT_CAMP" Type="Self.AGENT_CAMP" Multiplicity="1" />
+    <End Role="AGENT_CAMP_CRITERIA" Type="Self.AGENT_CAMP_CRITERIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AGENT_CAMP">
+        <PropertyRef Name="AGENT_CAMP_ID" />
+      </Principal>
+      <Dependent Role="AGENT_CAMP_CRITERIA">
+        <PropertyRef Name="AGENT_CAMP_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="pd_cmcEntities" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+    <EntitySet Name="AGENT_CAMP" EntityType="Self.AGENT_CAMP" />
+    <EntitySet Name="AGENT_CAMP_CRITERIA" EntityType="Self.AGENT_CAMP_CRITERIA" />
+    <AssociationSet Name="FK__AGENT_CAM__AGENT__17C286CF" Association="Self.FK__AGENT_CAM__AGENT__17C286CF">
+      <End Role="AGENT_CAMP" EntitySet="AGENT_CAMP" />
+      <End Role="AGENT_CAMP_CRITERIA" EntitySet="AGENT_CAMP_CRITERIA" />
+    </AssociationSet>
+    <EntitySet Name="AGENT_CAMP_CRITERIA_MASTER" EntityType="pd_cmcModel.AGENT_CAMP_CRITERIA_MASTER" />
+    <EntitySet Name="LIST_META_DATA" EntityType="pd_cmcModel.LIST_META_DATA" />
+  </EntityContainer>
+  <EntityType Name="AGENT_CAMP_CRITERIA_MASTER">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CriteriaName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ActiveSw" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="LIST_META_DATA">
+    <Key>
+      <PropertyRef Name="LIST_META_DATA_ID" />
+    </Key>
+    <Property Name="LIST_META_DATA_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LIST_NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="RECEIVED_DATE" Type="DateTime" Precision="3" />
+    <Property Name="QUARTER" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LIST_ID" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="IsOnDispReport" Type="Boolean" />
+    <Property Name="ActiveOrInactive" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="LAST_TIMESTAMP" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+    <Property Name="records_received" Type="Int32" />
+    <Property Name="LIST_TYPE" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+    <Property Name="LIST_SEGMENT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

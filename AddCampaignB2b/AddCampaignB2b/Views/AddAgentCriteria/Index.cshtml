@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AddCampaignB2b.Models.AGENT_CAMP_CRITERIA>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<p>
+    <ul class="nav nav-pills">
+        <li class="active">
+            <a href="@Url.Action("Create", new { id = ViewBag.AgentCampID })"> <strong>Create New</strong></a>
+        </li>
+    </ul>
+</p>
+<table class="gridtable">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AGENT_CAMP.COMMUNICATOR)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PERCENT_APPLIED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QUERY)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AGENT_CAMP.COMMUNICATOR)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PERCENT_APPLIED)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUERY)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {  id=item.AGENT_CAMP_CRITERIA_ID }) | @Html.ActionLink("Delete", "Delete", new { id = item.AGENT_CAMP_CRITERIA_ID })
+            </td>
+        </tr>
+    }
+
+</table>

@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="pd_cmcModelStoreContainer" CdmEntityContainer="pd_cmcEntities">
+    <EntitySetMapping Name="AGENT_CAMP">
+      <EntityTypeMapping TypeName="pd_cmcModel.AGENT_CAMP">
+        <MappingFragment StoreEntitySet="AGENT_CAMP">
+          <ScalarProperty Name="AGENT_CAMP_ID" ColumnName="AGENT_CAMP_ID" />
+          <ScalarProperty Name="COMMUNICATOR" ColumnName="COMMUNICATOR" />
+          <ScalarProperty Name="CAMP_ABBR" ColumnName="CAMP_ABBR" />
+          <ScalarProperty Name="ACTIVE_SW" ColumnName="ACTIVE_SW" />
+          <ScalarProperty Name="START_DATE" ColumnName="START_DATE" />
+          <ScalarProperty Name="END_DATE" ColumnName="END_DATE" />
+          <ScalarProperty Name="LAST_UPDATED_BY" ColumnName="LAST_UPDATED_BY" />
+          <ScalarProperty Name="LAST_UPDATED_DATE" ColumnName="LAST_UPDATED_DATE" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+          <ScalarProperty Name="MAX_RECORDS" ColumnName="MAX_RECORDS" />
+          <ScalarProperty Name="AGENT_PRIORITY" ColumnName="AGENT_PRIORITY" />
+          <ScalarProperty Name="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" ColumnName="ALWAYS_FILL_BOOK_OF_BUSINESS_SW" />
+          <ScalarProperty Name="EMPLOYEE_ID" ColumnName="EMPLOYEE_ID" />
+          <ScalarProperty Name="CALLER_ID" ColumnName="CALLER_ID" />
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+          <ScalarProperty Name="REGION_ID" ColumnName="REGION_ID" />
+          <ScalarProperty Name="PROGRAM_START_DATE" ColumnName="PROGRAM_START_DATE" />
+          <ScalarProperty Name="DNIS" ColumnName="DNIS" />
+          <ScalarProperty Name="RECORD_TYPE" ColumnName="RECORD_TYPE" />
+          <ScalarProperty Name="ORIG_AGENT_ID" ColumnName="ORIG_AGENT_ID" />
+          <ScalarProperty Name="ORDER_MANAGER_SW" ColumnName="ORDER_MANAGER_SW" />
+          <ScalarProperty Name="Port_Number" ColumnName="Port_Number" />
+          <ScalarProperty Name="Phone_Number" ColumnName="Phone_Number" />
+          <ScalarProperty Name="GK_Owned" ColumnName="GK_Owned" />
+          <ScalarProperty Name="workgroup" ColumnName="workgroup" />
+          <ScalarProperty Name="BAM_EMAIL" ColumnName="BAM_EMAIL" />
+          <ScalarProperty Name="NT_LOGIN_NAME" ColumnName="NT_LOGIN_NAME" />
+          <ScalarProperty Name="TEST_AGENT" ColumnName="TEST_AGENT" />
+          <ScalarProperty Name="MIN_RECORDS" ColumnName="MIN_RECORDS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AGENT_CAMP_CRITERIA">
+      <EntityTypeMapping TypeName="pd_cmcModel.AGENT_CAMP_CRITERIA">
+        <MappingFragment StoreEntitySet="AGENT_CAMP_CRITERIA">
+          <ScalarProperty Name="AGENT_CAMP_ID" ColumnName="AGENT_CAMP_ID" />
+          <ScalarProperty Name="PRIORITY" ColumnName="PRIORITY" />
+          <ScalarProperty Name="PERCENT_APPLIED" ColumnName="PERCENT_APPLIED" />
+          <ScalarProperty Name="QUERY" ColumnName="QUERY" />
+          <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+          <ScalarProperty Name="AGENT_CAMP_CRITERIA_ID" ColumnName="AGENT_CAMP_CRITERIA_ID" />
+          <ScalarProperty Name="LAST_UPDATED_DATE" ColumnName="LAST_UPDATED_DATE" />
+          <ScalarProperty Name="LAST_UPDATED_BY" ColumnName="LAST_UPDATED_BY" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AGENT_CAMP_CRITERIA_MASTER">
+      <EntityTypeMapping TypeName="pd_cmcModel.AGENT_CAMP_CRITERIA_MASTER">
+        <MappingFragment StoreEntitySet="AGENT_CAMP_CRITERIA_MASTER">
+          <ScalarProperty Name="ActiveSw" ColumnName="ActiveSw" />
+          <ScalarProperty Name="CriteriaName" ColumnName="CriteriaName" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LIST_META_DATA">
+      <EntityTypeMapping TypeName="pd_cmcModel.LIST_META_DATA">
+        <MappingFragment StoreEntitySet="LIST_META_DATA">
+          <ScalarProperty Name="LIST_SEGMENT" ColumnName="LIST_SEGMENT" />
+          <ScalarProperty Name="LIST_TYPE" ColumnName="LIST_TYPE" />
+          <ScalarProperty Name="records_received" ColumnName="records_received" />
+          <ScalarProperty Name="LAST_TIMESTAMP" ColumnName="LAST_TIMESTAMP" />
+          <ScalarProperty Name="ActiveOrInactive" ColumnName="ActiveOrInactive" />
+          <ScalarProperty Name="IsOnDispReport" ColumnName="IsOnDispReport" />
+          <ScalarProperty Name="LIST_ID" ColumnName="LIST_ID" />
+          <ScalarProperty Name="QUARTER" ColumnName="QUARTER" />
+          <ScalarProperty Name="RECEIVED_DATE" ColumnName="RECEIVED_DATE" />
+          <ScalarProperty Name="LIST_NAME" ColumnName="LIST_NAME" />
+          <ScalarProperty Name="LIST_META_DATA_ID" ColumnName="LIST_META_DATA_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
